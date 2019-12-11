@@ -1,0 +1,478 @@
+Created by PLY version 3.10 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    HT
+    CTL
+    QUOTATION
+
+Grammar
+
+Rule 0     S' -> message
+Rule 1     message -> message statement
+Rule 2     message -> statement
+Rule 3     statement -> expression COLON expression crlf
+Rule 4     statement -> expression SP expression crlf
+Rule 5     statement -> expression crlf
+Rule 6     statement -> crlf
+Rule 7     expression -> expression alpha
+Rule 8     expression -> expression DIGIT
+Rule 9     expression -> expression MI expression
+Rule 10    expression -> alpha alpha
+Rule 11    expression -> alpha DIGIT
+Rule 12    expression -> DIGIT
+Rule 13    alpha -> LOALPHA
+Rule 14    alpha -> UPALPHA
+Rule 15    crlf -> CR LF
+Rule 16    crlf -> CRLF
+
+Terminals, with rules where they appear
+
+COLON                : 3
+CR                   : 15
+CRLF                 : 16
+CTL                  : 
+DIGIT                : 8 11 12
+HT                   : 
+LF                   : 15
+LOALPHA              : 13
+MI                   : 9
+QUOTATION            : 
+SP                   : 4
+UPALPHA              : 14
+error                : 
+
+Nonterminals, with rules where they appear
+
+alpha                : 7 10 10 11
+crlf                 : 3 4 5 6
+expression           : 3 3 4 4 5 7 8 9 9
+message              : 1 0
+statement            : 1 2
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . message
+    (1) message -> . message statement
+    (2) message -> . statement
+    (3) statement -> . expression COLON expression crlf
+    (4) statement -> . expression SP expression crlf
+    (5) statement -> . expression crlf
+    (6) statement -> . crlf
+    (7) expression -> . expression alpha
+    (8) expression -> . expression DIGIT
+    (9) expression -> . expression MI expression
+    (10) expression -> . alpha alpha
+    (11) expression -> . alpha DIGIT
+    (12) expression -> . DIGIT
+    (15) crlf -> . CR LF
+    (16) crlf -> . CRLF
+    (13) alpha -> . LOALPHA
+    (14) alpha -> . UPALPHA
+
+    DIGIT           shift and go to state 1
+    CR              shift and go to state 5
+    CRLF            shift and go to state 10
+    LOALPHA         shift and go to state 9
+    UPALPHA         shift and go to state 2
+
+    alpha                          shift and go to state 6
+    message                        shift and go to state 7
+    expression                     shift and go to state 8
+    crlf                           shift and go to state 3
+    statement                      shift and go to state 4
+
+state 1
+
+    (12) expression -> DIGIT .
+
+    DIGIT           reduce using rule 12 (expression -> DIGIT .)
+    MI              reduce using rule 12 (expression -> DIGIT .)
+    CR              reduce using rule 12 (expression -> DIGIT .)
+    CRLF            reduce using rule 12 (expression -> DIGIT .)
+    LOALPHA         reduce using rule 12 (expression -> DIGIT .)
+    UPALPHA         reduce using rule 12 (expression -> DIGIT .)
+    COLON           reduce using rule 12 (expression -> DIGIT .)
+    SP              reduce using rule 12 (expression -> DIGIT .)
+
+
+state 2
+
+    (14) alpha -> UPALPHA .
+
+    COLON           reduce using rule 14 (alpha -> UPALPHA .)
+    SP              reduce using rule 14 (alpha -> UPALPHA .)
+    DIGIT           reduce using rule 14 (alpha -> UPALPHA .)
+    MI              reduce using rule 14 (alpha -> UPALPHA .)
+    CR              reduce using rule 14 (alpha -> UPALPHA .)
+    CRLF            reduce using rule 14 (alpha -> UPALPHA .)
+    LOALPHA         reduce using rule 14 (alpha -> UPALPHA .)
+    UPALPHA         reduce using rule 14 (alpha -> UPALPHA .)
+
+
+state 3
+
+    (6) statement -> crlf .
+
+    DIGIT           reduce using rule 6 (statement -> crlf .)
+    CR              reduce using rule 6 (statement -> crlf .)
+    CRLF            reduce using rule 6 (statement -> crlf .)
+    LOALPHA         reduce using rule 6 (statement -> crlf .)
+    UPALPHA         reduce using rule 6 (statement -> crlf .)
+    $end            reduce using rule 6 (statement -> crlf .)
+
+
+state 4
+
+    (2) message -> statement .
+
+    DIGIT           reduce using rule 2 (message -> statement .)
+    CR              reduce using rule 2 (message -> statement .)
+    CRLF            reduce using rule 2 (message -> statement .)
+    LOALPHA         reduce using rule 2 (message -> statement .)
+    UPALPHA         reduce using rule 2 (message -> statement .)
+    $end            reduce using rule 2 (message -> statement .)
+
+
+state 5
+
+    (15) crlf -> CR . LF
+
+    LF              shift and go to state 11
+
+
+state 6
+
+    (10) expression -> alpha . alpha
+    (11) expression -> alpha . DIGIT
+    (13) alpha -> . LOALPHA
+    (14) alpha -> . UPALPHA
+
+    DIGIT           shift and go to state 13
+    LOALPHA         shift and go to state 9
+    UPALPHA         shift and go to state 2
+
+    alpha                          shift and go to state 12
+
+state 7
+
+    (0) S' -> message .
+    (1) message -> message . statement
+    (3) statement -> . expression COLON expression crlf
+    (4) statement -> . expression SP expression crlf
+    (5) statement -> . expression crlf
+    (6) statement -> . crlf
+    (7) expression -> . expression alpha
+    (8) expression -> . expression DIGIT
+    (9) expression -> . expression MI expression
+    (10) expression -> . alpha alpha
+    (11) expression -> . alpha DIGIT
+    (12) expression -> . DIGIT
+    (15) crlf -> . CR LF
+    (16) crlf -> . CRLF
+    (13) alpha -> . LOALPHA
+    (14) alpha -> . UPALPHA
+
+    DIGIT           shift and go to state 1
+    CR              shift and go to state 5
+    CRLF            shift and go to state 10
+    LOALPHA         shift and go to state 9
+    UPALPHA         shift and go to state 2
+
+    alpha                          shift and go to state 6
+    expression                     shift and go to state 8
+    crlf                           shift and go to state 3
+    statement                      shift and go to state 14
+
+state 8
+
+    (3) statement -> expression . COLON expression crlf
+    (4) statement -> expression . SP expression crlf
+    (5) statement -> expression . crlf
+    (7) expression -> expression . alpha
+    (8) expression -> expression . DIGIT
+    (9) expression -> expression . MI expression
+    (15) crlf -> . CR LF
+    (16) crlf -> . CRLF
+    (13) alpha -> . LOALPHA
+    (14) alpha -> . UPALPHA
+
+    COLON           shift and go to state 18
+    SP              shift and go to state 16
+    DIGIT           shift and go to state 15
+    MI              shift and go to state 17
+    CR              shift and go to state 5
+    CRLF            shift and go to state 10
+    LOALPHA         shift and go to state 9
+    UPALPHA         shift and go to state 2
+
+    alpha                          shift and go to state 20
+    crlf                           shift and go to state 19
+
+state 9
+
+    (13) alpha -> LOALPHA .
+
+    COLON           reduce using rule 13 (alpha -> LOALPHA .)
+    SP              reduce using rule 13 (alpha -> LOALPHA .)
+    DIGIT           reduce using rule 13 (alpha -> LOALPHA .)
+    MI              reduce using rule 13 (alpha -> LOALPHA .)
+    CR              reduce using rule 13 (alpha -> LOALPHA .)
+    CRLF            reduce using rule 13 (alpha -> LOALPHA .)
+    LOALPHA         reduce using rule 13 (alpha -> LOALPHA .)
+    UPALPHA         reduce using rule 13 (alpha -> LOALPHA .)
+
+
+state 10
+
+    (16) crlf -> CRLF .
+
+    DIGIT           reduce using rule 16 (crlf -> CRLF .)
+    CR              reduce using rule 16 (crlf -> CRLF .)
+    CRLF            reduce using rule 16 (crlf -> CRLF .)
+    LOALPHA         reduce using rule 16 (crlf -> CRLF .)
+    UPALPHA         reduce using rule 16 (crlf -> CRLF .)
+    $end            reduce using rule 16 (crlf -> CRLF .)
+
+
+state 11
+
+    (15) crlf -> CR LF .
+
+    DIGIT           reduce using rule 15 (crlf -> CR LF .)
+    CR              reduce using rule 15 (crlf -> CR LF .)
+    CRLF            reduce using rule 15 (crlf -> CR LF .)
+    LOALPHA         reduce using rule 15 (crlf -> CR LF .)
+    UPALPHA         reduce using rule 15 (crlf -> CR LF .)
+    $end            reduce using rule 15 (crlf -> CR LF .)
+
+
+state 12
+
+    (10) expression -> alpha alpha .
+
+    DIGIT           reduce using rule 10 (expression -> alpha alpha .)
+    MI              reduce using rule 10 (expression -> alpha alpha .)
+    CR              reduce using rule 10 (expression -> alpha alpha .)
+    CRLF            reduce using rule 10 (expression -> alpha alpha .)
+    LOALPHA         reduce using rule 10 (expression -> alpha alpha .)
+    UPALPHA         reduce using rule 10 (expression -> alpha alpha .)
+    COLON           reduce using rule 10 (expression -> alpha alpha .)
+    SP              reduce using rule 10 (expression -> alpha alpha .)
+
+
+state 13
+
+    (11) expression -> alpha DIGIT .
+
+    DIGIT           reduce using rule 11 (expression -> alpha DIGIT .)
+    MI              reduce using rule 11 (expression -> alpha DIGIT .)
+    CR              reduce using rule 11 (expression -> alpha DIGIT .)
+    CRLF            reduce using rule 11 (expression -> alpha DIGIT .)
+    LOALPHA         reduce using rule 11 (expression -> alpha DIGIT .)
+    UPALPHA         reduce using rule 11 (expression -> alpha DIGIT .)
+    COLON           reduce using rule 11 (expression -> alpha DIGIT .)
+    SP              reduce using rule 11 (expression -> alpha DIGIT .)
+
+
+state 14
+
+    (1) message -> message statement .
+
+    DIGIT           reduce using rule 1 (message -> message statement .)
+    CR              reduce using rule 1 (message -> message statement .)
+    CRLF            reduce using rule 1 (message -> message statement .)
+    LOALPHA         reduce using rule 1 (message -> message statement .)
+    UPALPHA         reduce using rule 1 (message -> message statement .)
+    $end            reduce using rule 1 (message -> message statement .)
+
+
+state 15
+
+    (8) expression -> expression DIGIT .
+
+    DIGIT           reduce using rule 8 (expression -> expression DIGIT .)
+    MI              reduce using rule 8 (expression -> expression DIGIT .)
+    CR              reduce using rule 8 (expression -> expression DIGIT .)
+    CRLF            reduce using rule 8 (expression -> expression DIGIT .)
+    LOALPHA         reduce using rule 8 (expression -> expression DIGIT .)
+    UPALPHA         reduce using rule 8 (expression -> expression DIGIT .)
+    COLON           reduce using rule 8 (expression -> expression DIGIT .)
+    SP              reduce using rule 8 (expression -> expression DIGIT .)
+
+
+state 16
+
+    (4) statement -> expression SP . expression crlf
+    (7) expression -> . expression alpha
+    (8) expression -> . expression DIGIT
+    (9) expression -> . expression MI expression
+    (10) expression -> . alpha alpha
+    (11) expression -> . alpha DIGIT
+    (12) expression -> . DIGIT
+    (13) alpha -> . LOALPHA
+    (14) alpha -> . UPALPHA
+
+    DIGIT           shift and go to state 1
+    LOALPHA         shift and go to state 9
+    UPALPHA         shift and go to state 2
+
+    alpha                          shift and go to state 6
+    expression                     shift and go to state 21
+
+state 17
+
+    (9) expression -> expression MI . expression
+    (7) expression -> . expression alpha
+    (8) expression -> . expression DIGIT
+    (9) expression -> . expression MI expression
+    (10) expression -> . alpha alpha
+    (11) expression -> . alpha DIGIT
+    (12) expression -> . DIGIT
+    (13) alpha -> . LOALPHA
+    (14) alpha -> . UPALPHA
+
+    DIGIT           shift and go to state 1
+    LOALPHA         shift and go to state 9
+    UPALPHA         shift and go to state 2
+
+    alpha                          shift and go to state 6
+    expression                     shift and go to state 22
+
+state 18
+
+    (3) statement -> expression COLON . expression crlf
+    (7) expression -> . expression alpha
+    (8) expression -> . expression DIGIT
+    (9) expression -> . expression MI expression
+    (10) expression -> . alpha alpha
+    (11) expression -> . alpha DIGIT
+    (12) expression -> . DIGIT
+    (13) alpha -> . LOALPHA
+    (14) alpha -> . UPALPHA
+
+    DIGIT           shift and go to state 1
+    LOALPHA         shift and go to state 9
+    UPALPHA         shift and go to state 2
+
+    alpha                          shift and go to state 6
+    expression                     shift and go to state 23
+
+state 19
+
+    (5) statement -> expression crlf .
+
+    DIGIT           reduce using rule 5 (statement -> expression crlf .)
+    CR              reduce using rule 5 (statement -> expression crlf .)
+    CRLF            reduce using rule 5 (statement -> expression crlf .)
+    LOALPHA         reduce using rule 5 (statement -> expression crlf .)
+    UPALPHA         reduce using rule 5 (statement -> expression crlf .)
+    $end            reduce using rule 5 (statement -> expression crlf .)
+
+
+state 20
+
+    (7) expression -> expression alpha .
+
+    DIGIT           reduce using rule 7 (expression -> expression alpha .)
+    MI              reduce using rule 7 (expression -> expression alpha .)
+    CR              reduce using rule 7 (expression -> expression alpha .)
+    CRLF            reduce using rule 7 (expression -> expression alpha .)
+    LOALPHA         reduce using rule 7 (expression -> expression alpha .)
+    UPALPHA         reduce using rule 7 (expression -> expression alpha .)
+    COLON           reduce using rule 7 (expression -> expression alpha .)
+    SP              reduce using rule 7 (expression -> expression alpha .)
+
+
+state 21
+
+    (4) statement -> expression SP expression . crlf
+    (7) expression -> expression . alpha
+    (8) expression -> expression . DIGIT
+    (9) expression -> expression . MI expression
+    (15) crlf -> . CR LF
+    (16) crlf -> . CRLF
+    (13) alpha -> . LOALPHA
+    (14) alpha -> . UPALPHA
+
+    DIGIT           shift and go to state 15
+    MI              shift and go to state 17
+    CR              shift and go to state 5
+    CRLF            shift and go to state 10
+    LOALPHA         shift and go to state 9
+    UPALPHA         shift and go to state 2
+
+    alpha                          shift and go to state 20
+    crlf                           shift and go to state 24
+
+state 22
+
+    (9) expression -> expression MI expression .
+    (7) expression -> expression . alpha
+    (8) expression -> expression . DIGIT
+    (9) expression -> expression . MI expression
+    (13) alpha -> . LOALPHA
+    (14) alpha -> . UPALPHA
+
+    DIGIT           reduce using rule 9 (expression -> expression MI expression .)
+    MI              reduce using rule 9 (expression -> expression MI expression .)
+    CR              reduce using rule 9 (expression -> expression MI expression .)
+    CRLF            reduce using rule 9 (expression -> expression MI expression .)
+    COLON           reduce using rule 9 (expression -> expression MI expression .)
+    SP              reduce using rule 9 (expression -> expression MI expression .)
+    LOALPHA         shift and go to state 9
+    UPALPHA         shift and go to state 2
+
+  ! LOALPHA         [ reduce using rule 9 (expression -> expression MI expression .) ]
+  ! UPALPHA         [ reduce using rule 9 (expression -> expression MI expression .) ]
+  ! DIGIT           [ shift and go to state 15 ]
+  ! MI              [ shift and go to state 17 ]
+
+    alpha                          shift and go to state 20
+
+state 23
+
+    (3) statement -> expression COLON expression . crlf
+    (7) expression -> expression . alpha
+    (8) expression -> expression . DIGIT
+    (9) expression -> expression . MI expression
+    (15) crlf -> . CR LF
+    (16) crlf -> . CRLF
+    (13) alpha -> . LOALPHA
+    (14) alpha -> . UPALPHA
+
+    DIGIT           shift and go to state 15
+    MI              shift and go to state 17
+    CR              shift and go to state 5
+    CRLF            shift and go to state 10
+    LOALPHA         shift and go to state 9
+    UPALPHA         shift and go to state 2
+
+    alpha                          shift and go to state 20
+    crlf                           shift and go to state 25
+
+state 24
+
+    (4) statement -> expression SP expression crlf .
+
+    DIGIT           reduce using rule 4 (statement -> expression SP expression crlf .)
+    CR              reduce using rule 4 (statement -> expression SP expression crlf .)
+    CRLF            reduce using rule 4 (statement -> expression SP expression crlf .)
+    LOALPHA         reduce using rule 4 (statement -> expression SP expression crlf .)
+    UPALPHA         reduce using rule 4 (statement -> expression SP expression crlf .)
+    $end            reduce using rule 4 (statement -> expression SP expression crlf .)
+
+
+state 25
+
+    (3) statement -> expression COLON expression crlf .
+
+    DIGIT           reduce using rule 3 (statement -> expression COLON expression crlf .)
+    CR              reduce using rule 3 (statement -> expression COLON expression crlf .)
+    CRLF            reduce using rule 3 (statement -> expression COLON expression crlf .)
+    LOALPHA         reduce using rule 3 (statement -> expression COLON expression crlf .)
+    UPALPHA         reduce using rule 3 (statement -> expression COLON expression crlf .)
+    $end            reduce using rule 3 (statement -> expression COLON expression crlf .)
+
